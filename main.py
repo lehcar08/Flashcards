@@ -1,6 +1,7 @@
 import os #this allows me to clear the screen
 import random #this picks random elements of a list
 from colorama import Fore #I can change the color of text
+init(autoreset=True)
 import time #This is my equivalent of a wait block
 flashcard_archive = [] #the wielder of all flashcards
 archive_count = 0 #this counts the number of flashcards 
