@@ -1,4 +1,3 @@
-import os #this allows me to cls the screen
 import random #this picks random elements of a list
 from colorama import Fore #I can change the color of text
 init(autoreset=True)
@@ -22,14 +21,14 @@ def create_flashcard(): #function to create a flashcard
     home()
   new_flashcard = flashcard(name, definition)
   flashcard_archive.append(new_flashcard)
-  os.system("cls")
+  
   print("F L A S H C A R D S", "\n")
   print("Flashcard created.")
   global archive_count
   archive_count += 1
 
 def home(): #function that recalls home screen
-  os.system("cls")
+  
   print("F L A S H C A R D S", "\n")
   print(Fore.WHITE + "(" + Fore.RED + "1" + Fore.WHITE + ")",   Fore.BLUE, "Create")
   print(Fore.WHITE + "(" + Fore.RED + "2" + Fore.WHITE + ")",   Fore.LIGHTMAGENTA_EX, "View all flashcards", Fore.WHITE)
@@ -40,18 +39,18 @@ def home(): #function that recalls home screen
     print("Click (" + Fore.CYAN + "ENTER" + Fore.WHITE + ") to continue.")
     ENTER = input("")
     if ENTER == "":
-      os.system("cls")
+      
       home()
   
   if action == "1": #create flashcard
-    os.system("cls")
+    
     
     print("F L A S H C A R D S", "\n")
     create_flashcard()
     enter_home()
   
   elif action == "2": #view flashcard
-    os.system("cls")
+    
     print("F L A S H C A R D S", "\n")
     global index
     while index < archive_count:
@@ -63,7 +62,7 @@ def home(): #function that recalls home screen
     index = 0
     enter_home()
   elif action == "3": #study flashcard
-    os.system("cls")
+    
     print("F L A S H C A R D S", "\n")
     print(Fore.WHITE + "(" + Fore.RED + "1" + Fore.WHITE + ")",   Fore.GREEN, "Multiple Choice")
     print(Fore.WHITE + "(" + Fore.RED + "2" + Fore.WHITE + ")",   Fore.LIGHTYELLOW_EX, "Writing")
@@ -71,14 +70,14 @@ def home(): #function that recalls home screen
     print("")
     study_action = input("")
     if study_action == "1" and archive_count >= 4: # determines if there is enough flashcards to study in multiple choice
-      os.system("cls")
+      
       print("F L A S H C A R D S", "\n")
       print("The definition will be shown and select the correct answer out of the few. Must have 4 flashcards or more.")
       print("Click (" + Fore.CYAN + "ENTER" + Fore.WHITE + ") to continue.")
       print("Enter (" + Fore.RED + "l" + Fore.WHITE + ") at any time to leave.")
       print("")
       def multiple_choice(): #function for multiple choice
-        os.system("cls")
+        
         print("F L A S H C A R D S", "\n")
         study_flashcard_archive = flashcard_archive.copy()
       
@@ -97,7 +96,7 @@ def home(): #function that recalls home screen
         correct_study_flashcard_MC = random.choice([study_flashcard, study_flashcard2, study_flashcard3, study_flashcard4])
 
         def MC_repeat(): #function to repeat multiple choice
-          os.system("cls")
+          
           print("F L A S H C A R D S", "\n")
           print(correct_study_flashcard_MC.definition)
           print("")
@@ -176,18 +175,18 @@ def home(): #function that recalls home screen
           home()
       
     elif study_action == "2":
-      os.system("cls")
+      
       print("F L A S H C A R D S", "\n")
       print("The definition will be shown and type the corresponding word.")
       print("Click (" + Fore.CYAN + "ENTER" + Fore.WHITE + ") to continue.")
       print("Enter (" + Fore.RED + "l" + Fore.WHITE + ") at any time to leave.")
       print("")
       def writing():
-        os.system("cls")
+        
         print("F L A S H C A R D S", "\n")
         correct_study_flashcard_writing = random.choice(flashcard_archive)
         def writing_repeat():
-          os.system("cls")
+          
           print("F L A S H C A R D S", "\n")
           print("Enter (" + Fore.CYAN + "q" + Fore.WHITE + ") to skip question.", "\n")
           print(correct_study_flashcard_writing.definition)
@@ -219,7 +218,7 @@ def home(): #function that recalls home screen
       elif ENTER == "l":
         home()
     elif study_action == 3:
-      os.system("cls")
+      
       print("F L A S H C A R D S", "\n")
       print("A variety of questions will be shown and give the       correct response for all of them.")
       print("Click (" + Fore.CYAN + "ENTER" + Fore.WHITE + ") to continue.")
@@ -231,7 +230,7 @@ def home(): #function that recalls home screen
       writing_correct = 0
       
       while MC_total < 5:
-        os.system("cls")
+        
         print("F L A S H C A R D S", "\n")
         study_flashcard_archive = flashcard_archive.copy()
         
@@ -287,14 +286,14 @@ def home(): #function that recalls home screen
           print(Fore.RED, "ERROR", Fore.WHITE)
           time.sleep(1)
           home()
-      os.system("cls")
+      
       print("F L A S H C A R D S", "\n")
       print("The definition will be shown and type the corresponding word.")
       print("Click (" + Fore.CYAN + "ENTER" + Fore.WHITE + ") to continue.")
       ENTER = input("")
       if ENTER == "":
         while writing_total < 5 and MC_total == 5:
-          os.system("cls")
+          
           print("F L A S H C A R D S", "\n")
           correct_study_flashcard_writing = random.choice(flashcard_archive)
           print(correct_study_flashcard_writing.definition)
@@ -305,7 +304,7 @@ def home(): #function that recalls home screen
           if writing_guess != correct_study_flashcard_writing.name:
             writing_total += 1
 
-      os.system("cls")
+      
       print("F L A S H C A R D S", "\n")
       print("Multiple choice correct: " + str(MC_correct) + "/" + str(MC_total))
       print("Writing correct: " + str(writing_correct) + "/" +       str(writing_total))
